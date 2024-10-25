@@ -30,6 +30,23 @@ To get started with koma-labeling, simply import the package in your Typst docum
 )
 ```
 
+Output:
+
+![图片](https://github.com/user-attachments/assets/bf382afe-f66d-4032-9055-f46c72a2e7dd)
+
+
+**Note:** Remember to terminate the list with a comma, even if only one pair of items is passed.
+
+```typ
+#import "@preview/koma-labeling:0.1.0": labeling
+
+#labeling(
+  (
+    (lorem(1), lorem(10)),  // Terminating the list with a comma is REQUIRED
+  )
+)
+```
+
 ## Parameters
 
 Although labeling is implemented using `tables`, its usage is similar to `terms`, except that it lacks the `tight` and `hanging-indent` parameters. If you have any questions about the parameters for `labeling`, you can refer to [`terms`](https://typst.app/docs/reference/model/terms/).
