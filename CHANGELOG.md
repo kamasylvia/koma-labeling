@@ -1,4 +1,4 @@
-# [unreleased](https://github.com/<author>/<my-package>/releases/tag/<the-tag>)
+# [unreleased](https://github.com/kamasylvia/koma-labeling/releases/tag/unreleased)
 ## Added
 
 ## Removed
@@ -9,5 +9,5 @@
 
 ---
 
-# [v0.1.0](https://github.com/<author>/<my-package>/releases/tag/v0.1.0)
+# [v0.1.0](https://github.com/kamasylvia/koma-labeling/releases/tag/v0.1.0)
 Initial Release

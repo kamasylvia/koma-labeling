@@ -1,64 +1,84 @@
-# The `my-package` Package
+# The `koma-labeling` Package
+
 <div align="center">Version 0.1.0</div>
 
-A short description about the project and/or client.
-
-## Template adaptation checklist
-
-- [ ] Fill out `README.md`
-  - Change the `my-package` package name, including code snippets
-  - Check section contents and/or delete sections that don't apply
-- [ ] Check and/or replace `LICENSE` by something that suits your needs
-- [ ] Fill out `typst.toml`
-  - See also the [typst/packages README](https://github.com/typst/packages/?tab=readme-ov-file#package-format)
-- [ ] Adapt Repository URLs in `CHANGELOG.md`
-  - Consider only committing that file with your first release, or removing the "Initial Release" part in the beginning
-- [ ] Adapt or deactivate the release workflow in `.github/workflows/release.yml`
-  - to deactivate it, delete that file or remove/comment out lines 2-4 (`on:` and following)
-  - to use the workflow
-    - [ ] check the values under `env:`, particularly `REGISTRY_REPO`
-    - [ ] if you don't have one, [create a fine-grained personal access token](https://github.com/settings/tokens?type=beta) with [only Contents permission](https://stackoverflow.com/a/75116350/371191) for the `REGISTRY_REPO`
-    - [ ] on this repo, create a secret `REGISTRY_TOKEN` (at `https://github.com/[user]/[repo]/settings/secrets/actions`) that contains the so created token
-
-    if configured correctly, whenever you create a tag `v...`, your package will be pushed onto a branch on the `REGISTRY_REPO`, from which you can then create a pull request against [typst/packages](https://github.com/typst/packages/)
-- [ ] remove/replace the example test case
-- [ ] (add your actual code, docs and tests)
-- [ ] remove this section from the README
+The koma-labeling package for Typst is inspired by the labeling environment from the KOMA-Script bundle in LaTeX. It provides a convenient way to create labeled lists with customizable label widths and optional delimiters, making it perfect for creating structured descriptions and lists in your Typst documents.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on the typst web app. Perhaps a short code example on importing the package and a very simple teaser usage.
+To get started with koma-labeling, simply import the package in your Typst document and use the labeling environment to create your labeled lists.
 
 ```typ
-#import "@preview/my-package:0.1.0": *
+#import "@preview/koma-labeling:0.1.0": labeling
 
-#show: my-show-rule.with()
-#my-func()
+#labeling(
+  (
+    (lorem(1), lorem(10)),
+    (lorem(2), lorem(20)),
+    (lorem(3), lorem(30)),
+  )
+)
+
+// or
+
+#labeling(
+  (
+    ([#lorem(1)], [#lorem(10)]),
+    ([#lorem(2)], [#lorem(20)]),
+    ([#lorem(3)], [#lorem(30)]),
+  )
+)
 ```
 
-### Installation
+## Parameters
 
-A step by step guide that will tell you how to get the development environment up and running. This should example how to clone the repo and where to (maybe a link to the typst documentation on it), along with any pre-requisite software and installation steps.
-
-```
-$ First step
-$ Another step
-$ Final step
-```
-
-## Usage
-
-A more in-depth description of usage. Any template arguments? A complicated example that showcases most if not all of the functions the package provides? This is also an excellent place to signpost the manual.
+Although labeling is implemented using `tables`, its usage is similar to `terms`, except that it lacks the `tight` and `hanging-indent` parameters. If you have any questions about the parameters for `labeling`, you can refer to [`terms`](https://typst.app/docs/reference/model/terms/).
 
 ```typ
-#import "@preview/my-package:0.1.0": *
+labeling(
+  separator: content,
+  indent: length,
+  spacing: auto length
+  pairs: ((content, content))
+)
+```
 
-#let my-complicated-example = ...
+### separator
+
+The separator between the item and the description.
+
+Default: `[:#h(0.6em)]`
+
+### indent
+
+The indentation of each item.
+
+Default: `0pt`
+
+### spacing
+
+The spacing between the items of the term list.
+
+Default: `auto`
+
+### pairs
+
+An array of `(item, description)` pairs.
+
+Example:
+
+```typ
+#labeling(
+  (
+    ([key 1],[description 1]),
+    ([keyword 2],[description 2]),
+  )
+)
 ```
 
 ## Additional Documentation and Acknowledgments
 
-* Project folder on server:
-* Confluence link:
-* Asana board:
-* etc...
+For more information on the koma-labeling package and its features, you can refer to the following resources:
+
+- Typst Documentation: [Typst Documentation](https://typst.app/docs)
+- KOMA-Script Documentation: [KOMA-Script Documentation](https://ctan.org/pkg/koma-script)
